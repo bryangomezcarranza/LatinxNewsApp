@@ -23,7 +23,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.rootViewController = LNTabBarViewController() // current controller that is being shown.
         window?.makeKeyAndVisible()
         configureNavigationBar()
-        configureNavigationBar()
         
     }
     

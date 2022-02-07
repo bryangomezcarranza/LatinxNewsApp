@@ -14,6 +14,12 @@
 		5BB6077327B19D6000A0434E /* LNTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB6077227B19D6000A0434E /* LNTabBarViewController.swift */; };
 		5BB6077A27B1A1A100A0434E /* LNHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB6077927B1A1A100A0434E /* LNHomeViewController.swift */; };
 		5BB6077C27B1A1C800A0434E /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB6077B27B1A1C800A0434E /* FavoritesViewController.swift */; };
+		5BB6078027B1B2BE00A0434E /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB6077F27B1B2BE00A0434E /* News.swift */; };
+		5BB6078227B1B35E00A0434E /* NewsStories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB6078127B1B35E00A0434E /* NewsStories.swift */; };
+		5BB6078527B1B5B000A0434E /* LNStoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB6078427B1B5B000A0434E /* LNStoryCell.swift */; };
+		5BB6078C27B1B77900A0434E /* LNTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB6078B27B1B77900A0434E /* LNTitleLabel.swift */; };
+		5BB6078E27B1B8C500A0434E /* LNBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB6078D27B1B8C500A0434E /* LNBodyLabel.swift */; };
+		5BB6079127B1BC6C00A0434E /* LNSymbolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB6079027B1BC6C00A0434E /* LNSymbolView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +32,12 @@
 		5BB6077227B19D6000A0434E /* LNTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LNTabBarViewController.swift; sourceTree = "<group>"; };
 		5BB6077927B1A1A100A0434E /* LNHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LNHomeViewController.swift; sourceTree = "<group>"; };
 		5BB6077B27B1A1C800A0434E /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		5BB6077F27B1B2BE00A0434E /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		5BB6078127B1B35E00A0434E /* NewsStories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsStories.swift; sourceTree = "<group>"; };
+		5BB6078427B1B5B000A0434E /* LNStoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LNStoryCell.swift; sourceTree = "<group>"; };
+		5BB6078B27B1B77900A0434E /* LNTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LNTitleLabel.swift; sourceTree = "<group>"; };
+		5BB6078D27B1B8C500A0434E /* LNBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LNBodyLabel.swift; sourceTree = "<group>"; };
+		5BB6079027B1BC6C00A0434E /* LNSymbolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LNSymbolView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +70,8 @@
 		5BB6075D27B199CC00A0434E /* LatinxNewsApp */ = {
 			isa = PBXGroup;
 			children = (
-				5BB6077627B19E6C00A0434E /* Views */,
+				5BB6077E27B1B20100A0434E /* Model */,
+				5BB6077627B19E6C00A0434E /* Costume Views */,
 				5BB6077527B19E5200A0434E /* Controllers */,
 				5BB6077427B19E3500A0434E /* Resources */,
 				5BB6076C27B199D100A0434E /* Info.plist */,
@@ -85,12 +98,15 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		5BB6077627B19E6C00A0434E /* Views */ = {
+		5BB6077627B19E6C00A0434E /* Costume Views */ = {
 			isa = PBXGroup;
 			children = (
+				5BB6078F27B1BB1100A0434E /* Views */,
+				5BB6078A27B1B75700A0434E /* Labels */,
+				5BB6078327B1B58500A0434E /* Cells */,
 				5BB6077727B19E7800A0434E /* Storyboards */,
 			);
-			path = Views;
+			path = "Costume Views";
 			sourceTree = "<group>";
 		};
 		5BB6077727B19E7800A0434E /* Storyboards */ = {
@@ -112,10 +128,44 @@
 		5BB6077D27B1A1D600A0434E /* Core Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				5BB6077B27B1A1C800A0434E /* FavoritesViewController.swift */,
 				5BB6077927B1A1A100A0434E /* LNHomeViewController.swift */,
+				5BB6077B27B1A1C800A0434E /* FavoritesViewController.swift */,
 			);
 			path = "Core Controllers";
+			sourceTree = "<group>";
+		};
+		5BB6077E27B1B20100A0434E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5BB6077F27B1B2BE00A0434E /* News.swift */,
+				5BB6078127B1B35E00A0434E /* NewsStories.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5BB6078327B1B58500A0434E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				5BB6078427B1B5B000A0434E /* LNStoryCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		5BB6078A27B1B75700A0434E /* Labels */ = {
+			isa = PBXGroup;
+			children = (
+				5BB6078B27B1B77900A0434E /* LNTitleLabel.swift */,
+				5BB6078D27B1B8C500A0434E /* LNBodyLabel.swift */,
+			);
+			path = Labels;
+			sourceTree = "<group>";
+		};
+		5BB6078F27B1BB1100A0434E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5BB6079027B1BC6C00A0434E /* LNSymbolView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,11 +238,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BB6078027B1B2BE00A0434E /* News.swift in Sources */,
 				5BB6077327B19D6000A0434E /* LNTabBarViewController.swift in Sources */,
+				5BB6078227B1B35E00A0434E /* NewsStories.swift in Sources */,
 				5BB6075F27B199CC00A0434E /* AppDelegate.swift in Sources */,
 				5BB6076127B199CC00A0434E /* SceneDelegate.swift in Sources */,
 				5BB6077C27B1A1C800A0434E /* FavoritesViewController.swift in Sources */,
+				5BB6079127B1BC6C00A0434E /* LNSymbolView.swift in Sources */,
+				5BB6078C27B1B77900A0434E /* LNTitleLabel.swift in Sources */,
 				5BB6077A27B1A1A100A0434E /* LNHomeViewController.swift in Sources */,
+				5BB6078E27B1B8C500A0434E /* LNBodyLabel.swift in Sources */,
+				5BB6078527B1B5B000A0434E /* LNStoryCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
