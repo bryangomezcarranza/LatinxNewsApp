@@ -8,9 +8,21 @@
 import Foundation
 
 struct NewsStories: Codable {
+    
     let title: String
-    let url: String
+    let url: String?
     let author: String
-    let comments: Int
     let points: Int
+    let numberOfComments: Int
+    
+    
+    enum CodingKeys: String, CodingKey {
+        case title = "title"
+        case url = "url"
+        case author = "author"
+        case points = "points"
+        case numberOfComments = "num_comments"
+     
+    }
 }
+

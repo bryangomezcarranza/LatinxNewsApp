@@ -11,11 +11,29 @@ class LNHomeViewController: UIViewController {
 
     var tableView: UITableView!
     
+    var news: [NewsStories] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         configureTableView()
         configureViewController()
+        getNews()
+    }
+    
+    func getNews() {
+        NetworkManager.shared.news { result in
+            switch result {
+                
+            case .success(let response):
+                DispatchQueue.main.async {
+                    self.news = response.hits
+                    self.tableView.reloadData()
+                }
+            case .failure(let error):
+                print("Error in \(#function) : \(error.localizedDescription) \n---\n \(error)")
+            }
+        }
     }
     
     private func configureViewController() {
@@ -28,24 +46,25 @@ class LNHomeViewController: UIViewController {
         view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(LNStoryCell.self, forCellReuseIdentifier: LNStoryCell.reuseIdentifier)
     }
 
 }
 
 extension LNHomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return news.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "Whats up"
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: LNStoryCell.reuseIdentifier, for: indexPath) as? LNStoryCell else { return UITableViewCell() }
+        let news = news[indexPath.row]
+        cell.set(news: news)
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        return 75
     }
     
 }

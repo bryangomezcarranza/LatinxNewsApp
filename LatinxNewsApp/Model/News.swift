@@ -7,6 +7,7 @@
 
 import Foundation
 
-struct News: Decodable {
+struct News: Codable {
     var hits: [NewsStories]
 }
+

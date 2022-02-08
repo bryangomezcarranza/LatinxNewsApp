@@ -26,9 +26,10 @@ class LNTitleLabel: UILabel {
     
     private func configure() {
         textColor = .label
-        adjustsFontSizeToFitWidth = true
+        adjustsFontSizeToFitWidth = false
         minimumScaleFactor = 0.9
-        lineBreakMode = .byTruncatingTail
-        translatesAutoresizingMaskIntoConstraints = false 
+        numberOfLines = 0
+        lineBreakStrategy = .standard
+        translatesAutoresizingMaskIntoConstraints = false
     }
 }
