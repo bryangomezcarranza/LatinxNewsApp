@@ -22,6 +22,7 @@
 		5BB6079127B1BC6C00A0434E /* LNSymbolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB6079027B1BC6C00A0434E /* LNSymbolView.swift */; };
 		5BB6079427B2F1B000A0434E /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB6079327B2F1AF00A0434E /* NetworkManager.swift */; };
 		5BB6079727B2FA6000A0434E /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB6079627B2FA6000A0434E /* APIError.swift */; };
+		5BDEA17227BED6A0001CD513 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDEA17127BED6A0001CD513 /* Date+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		5BB6079027B1BC6C00A0434E /* LNSymbolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LNSymbolView.swift; sourceTree = "<group>"; };
 		5BB6079327B2F1AF00A0434E /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		5BB6079627B2FA6000A0434E /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		5BDEA17127BED6A0001CD513 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				5BB6079627B2FA6000A0434E /* APIError.swift */,
+				5BDEA17127BED6A0001CD513 /* Date+Extension.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 				5BB6078C27B1B77900A0434E /* LNTitleLabel.swift in Sources */,
 				5BB6077A27B1A1A100A0434E /* LNHomeViewController.swift in Sources */,
 				5BB6078E27B1B8C500A0434E /* LNBodyLabel.swift in Sources */,
+				5BDEA17227BED6A0001CD513 /* Date+Extension.swift in Sources */,
 				5BB6078527B1B5B000A0434E /* LNStoryCell.swift in Sources */,
 				5BB6079727B2FA6000A0434E /* APIError.swift in Sources */,
 			);

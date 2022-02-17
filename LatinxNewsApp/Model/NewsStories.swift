@@ -14,6 +14,7 @@ struct NewsStories: Codable {
     let author: String
     let points: Int
     let numberOfComments: Int
+    let datePosted: String
     
     
     enum CodingKeys: String, CodingKey {
@@ -22,6 +23,7 @@ struct NewsStories: Codable {
         case author = "author"
         case points = "points"
         case numberOfComments = "num_comments"
+        case datePosted = "created_at"
      
     }
 }

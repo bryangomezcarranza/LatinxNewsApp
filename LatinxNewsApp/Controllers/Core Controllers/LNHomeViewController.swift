@@ -22,12 +22,13 @@ class LNHomeViewController: UIViewController {
     }
     
     func getNews() {
-        NetworkManager.shared.news { result in
+        NetworkManager.shared.news {  [weak self] result in
+            guard let self = self else { return }
             switch result {
-                
             case .success(let response):
                 DispatchQueue.main.async {
-                    self.news = response.hits
+                    let filterMostRecent = response.hits.sorted(by: {$0.datePosted > $1.datePosted})
+                    self.news = filterMostRecent
                     self.tableView.reloadData()
                 }
             case .failure(let error):
@@ -62,9 +63,4 @@ extension LNHomeViewController: UITableViewDelegate, UITableViewDataSource {
         cell.set(news: news)
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 75
-    }
-    
 }

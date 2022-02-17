@@ -18,9 +18,9 @@ class NetworkManager {
     func news(completion: @escaping (Result<News, Error>) -> Void) {
         let query = "Latinos in tech"
         guard let safeQuery = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
-        
         request(url: url(for: .search, queryParams: ["query" : safeQuery]), expecting: News.self, completion: completion)
     }
+    
     
     //MARK: - Private
     
