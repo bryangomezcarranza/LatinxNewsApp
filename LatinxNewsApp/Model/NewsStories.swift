@@ -9,13 +9,14 @@ import Foundation
 
 struct NewsStories: Codable {
     
-    let title: String
+    let title: String?
     let url: String?
     let author: String
-    let points: Int
-    let numberOfComments: Int
+    let points: Int?
+    let numberOfComments: Int?
     let datePosted: String
-    
+    let objectID: String
+    let commentText: String?
     
     enum CodingKeys: String, CodingKey {
         case title = "title"
@@ -24,7 +25,10 @@ struct NewsStories: Codable {
         case points = "points"
         case numberOfComments = "num_comments"
         case datePosted = "created_at"
-     
+        case objectID = "objectID"
+        case commentText = "comment_text"
     }
 }
+
+
 

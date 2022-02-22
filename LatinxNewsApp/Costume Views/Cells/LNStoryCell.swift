@@ -37,8 +37,8 @@ class LNStoryCell: UITableViewCell {
         
         titleLabel.text = news.title
         authorLabel.text = "By: \(news.author)"
-        upVoteLabel.set(text: String(news.points))
-        commentLabel.set(text: String(news.numberOfComments))
+        upVoteLabel.set(text: String(news.points!))
+        commentLabel.set(text: String(news.numberOfComments!))
         timeOfPost.set(text: Date.timeSinceDateString(news.datePosted.toDate(withFormat: news.datePosted))())
     }
     

@@ -14,11 +14,17 @@ class NetworkManager {
     private let baseUrl = "http://hn.algolia.com/api/v1/"
     private let stories = "story"
     
-    
     func news(completion: @escaping (Result<News, Error>) -> Void) {
         let query = "Latinos in tech"
         guard let safeQuery = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
         request(url: url(for: .search, queryParams: ["query" : safeQuery]), expecting: News.self, completion: completion)
+    }
+    
+    func fetchComments(ids: String, completion: @escaping (Result<News, Error>) -> Void) {
+        let queryItems = "search?tags=comment,"
+        let endPoint = baseUrl + queryItems + "story_\(ids)"
+        print(endPoint)
+        request(url: URL(string: endPoint), expecting: News.self, completion: completion)
     }
     
     
@@ -37,7 +43,8 @@ class NetworkManager {
             queryItems.append(URLQueryItem(name: name, value: value))
         }
         // Add Token
-        queryItems.append(URLQueryItem(name: "tags", value: stories))
+        queryItems.append(URLQueryItem(name: "tags", value: stories ))
+        
         
         // Convert queri items in suffix string
         let queryString = queryItems.map { "\($0.name)=\($0.value ?? "")"}.joined(separator: "&")

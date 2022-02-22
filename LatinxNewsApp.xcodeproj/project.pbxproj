@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B849F8C27C557CC0060DF14 /* LNDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B849F8B27C557CB0060DF14 /* LNDetailsViewController.swift */; };
+		5B849F8E27C579DF0060DF14 /* LNCommentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B849F8D27C579DF0060DF14 /* LNCommentsTableViewCell.swift */; };
+		5B849F9027C57A850060DF14 /* LNTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B849F8F27C57A850060DF14 /* LNTextView.swift */; };
 		5BB6075F27B199CC00A0434E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB6075E27B199CC00A0434E /* AppDelegate.swift */; };
 		5BB6076127B199CC00A0434E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB6076027B199CC00A0434E /* SceneDelegate.swift */; };
 		5BB6076827B199D100A0434E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BB6076727B199D100A0434E /* Assets.xcassets */; };
@@ -26,6 +29,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B849F8B27C557CB0060DF14 /* LNDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LNDetailsViewController.swift; sourceTree = "<group>"; };
+		5B849F8D27C579DF0060DF14 /* LNCommentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LNCommentsTableViewCell.swift; sourceTree = "<group>"; };
+		5B849F8F27C57A850060DF14 /* LNTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LNTextView.swift; sourceTree = "<group>"; };
 		5BB6075B27B199CC00A0434E /* LatinxNewsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LatinxNewsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BB6075E27B199CC00A0434E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5BB6076027B199CC00A0434E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +63,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B849F8A27C557380060DF14 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				5B849F8B27C557CB0060DF14 /* LNDetailsViewController.swift */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
 		5BB6075227B199CC00A0434E = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				5BB6077D27B1A1D600A0434E /* Core Controllers */,
+				5B849F8A27C557380060DF14 /* Other */,
 				5BB6077827B19E9000A0434E /* TabBarController */,
 			);
 			path = Controllers;
@@ -155,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				5BB6078427B1B5B000A0434E /* LNStoryCell.swift */,
+				5B849F8D27C579DF0060DF14 /* LNCommentsTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -172,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				5BB6079027B1BC6C00A0434E /* LNSymbolView.swift */,
+				5B849F8F27C57A850060DF14 /* LNTextView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -273,6 +290,9 @@
 				5BB6079127B1BC6C00A0434E /* LNSymbolView.swift in Sources */,
 				5BB6078C27B1B77900A0434E /* LNTitleLabel.swift in Sources */,
 				5BB6077A27B1A1A100A0434E /* LNHomeViewController.swift in Sources */,
+				5B849F8C27C557CC0060DF14 /* LNDetailsViewController.swift in Sources */,
+				5B849F8E27C579DF0060DF14 /* LNCommentsTableViewCell.swift in Sources */,
+				5B849F9027C57A850060DF14 /* LNTextView.swift in Sources */,
 				5BB6078E27B1B8C500A0434E /* LNBodyLabel.swift in Sources */,
 				5BDEA17227BED6A0001CD513 /* Date+Extension.swift in Sources */,
 				5BB6078527B1B5B000A0434E /* LNStoryCell.swift in Sources */,
