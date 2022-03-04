@@ -26,8 +26,10 @@ class LNDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Comments"
         configureTableView()
+        getComments()
+        
+        title = "Comments"
         
         
     }
@@ -38,8 +40,15 @@ class LNDetailsViewController: UIViewController {
             case .success(let ids):
                 DispatchQueue.main.async {
                     self.newsComments = ids.hits
+                    
+                    if self.newsComments.isEmpty {
+                        let message = "This story doesn't have any comments, go comment!"
+                        DispatchQueue.main.async {
+                            self.showEmptyStateView(with: message, in: self.view)
+                            return
+                        }
+                    }
                     self.tableView.reloadData()
-                    print(ids)
                 }
             case .failure(let error):
                 print("There was an error: \(error)")
@@ -56,15 +65,6 @@ class LNDetailsViewController: UIViewController {
         tableView.dataSource = self
         
         tableView.register(LNCommentsTableViewCell.self, forCellReuseIdentifier: LNCommentsTableViewCell.reuseIdentifier)
-    }
-    
-    func uopdateUI(with comments: [NewsStories]) {
-        if self.newsComments.isEmpty {
-            let message = "This story has no comments :("
-            DispatchQueue.main.async {
-
-            }
-        }
     }
 }
 
