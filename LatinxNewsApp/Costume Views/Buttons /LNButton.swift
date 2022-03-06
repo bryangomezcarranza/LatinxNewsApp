@@ -18,23 +18,31 @@ class LNButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
-    convenience init(color: UIColor, systemImageName: String) {
+    convenience init(title: String) {
         self.init(frame: .zero)
-        set(color: color, systemImageName: systemImageName)
+        set(title: title)
     }
     
     func configure() {
+        
         configuration = .tinted()
         translatesAutoresizingMaskIntoConstraints = false
     }
     
-    func set(color: UIColor, systemImageName: String) {
-        configuration?.baseBackgroundColor = color
-        configuration?.baseForegroundColor = color
+    func set(title: String) {
+        var configButton = UIButton.Configuration.plain()
         
-        configuration?.image = UIImage(systemName: systemImageName)
-        configuration?.imagePadding = 6
-        configuration?.imagePlacement = .leading
+        var attr = AttributeContainer()
+        attr.font = .systemFont(ofSize: 10, weight: .semibold)
+        attr.foregroundColor = .systemBlue
+        
+    
+    
+        configButton.attributedTitle = AttributedString(title, attributes: attr)
+        configButton.contentInsets = .init(top: 10, leading: 0, bottom: 10, trailing: 0)
+        configButton.titleAlignment = .leading
+        self.configuration = configButton
+        
         
     }
     

@@ -13,7 +13,7 @@ class LNCommentsTableViewCell: UITableViewCell {
     
     var news: NewsStories!
     
-    let commentTextLabel = LNTextView(fontSize: 14)
+    let commentTextLabel = LNTextView(fontSize: 12)
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

@@ -65,8 +65,11 @@ extension LNHomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         let newsComment = news[indexPath.row]
-        let destVC = LNDetailsViewController(newsID: newsComment.objectID)
-        navigationController?.pushViewController(destVC, animated: true)
+        let detailVC = LNDetailsViewController()
+        detailVC.news = newsComment
+        
+        navigationController?.pushViewController(detailVC, animated: true)
     }
 }

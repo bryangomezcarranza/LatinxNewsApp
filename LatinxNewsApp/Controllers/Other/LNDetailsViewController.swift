@@ -11,31 +11,34 @@ class LNDetailsViewController: UIViewController {
     
     let tableView = UITableView()
     
-   // var news: NewsStories!
+    var news: NewsStories!
     var newsID: String!
     var newsComments: [NewsStories] = []
     
-    init(newsID: String) {
-        super.init(nibName: nil, bundle: nil)
-        self.newsID = newsID
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        configure()
         configureTableView()
         getComments()
         
-        title = "Comments"
-        
         
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        guard let headerView = tableView.tableHeaderView else { return }
+        let size = headerView.systemLayoutSizeFitting(CGSize(width: tableView.bounds.height, height: 0))
+        
+        if headerView.frame.size.height != size.height {
+            headerView.frame.size.height = size.height
+            tableView.tableHeaderView = headerView
+            tableView.layoutIfNeeded()
+        }
+    }
+    
     func getComments() {
-        NetworkManager.shared.fetchComments(ids: newsID) { result in
+        NetworkManager.shared.fetchComments(ids: news.objectID) { result in
             switch result {
             case .success(let ids):
                 DispatchQueue.main.async {
@@ -55,14 +58,21 @@ class LNDetailsViewController: UIViewController {
             }
         }
     }
+    func configure() {
+        navigationItem.largeTitleDisplayMode = .never
+        navigationItem.title = "\(String(describing: news.numberOfComments ?? 0) ) Comments"
+    }
     
     func configureTableView() {
         view.addSubview(tableView)
+        
         tableView.frame = view.bounds
         tableView.rowHeight = 80
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        tableView.tableHeaderView = LNTableHeader(news: news)
         
         tableView.register(LNCommentsTableViewCell.self, forCellReuseIdentifier: LNCommentsTableViewCell.reuseIdentifier)
     }
