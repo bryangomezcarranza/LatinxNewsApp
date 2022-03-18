@@ -9,12 +9,12 @@ import Foundation
 
 struct NewsStories: Codable {
     
-    let title: String?
+    var title: String?
     let url: String?
-    let author: String
+    let author: String?
     let points: Int?
     let numberOfComments: Int?
-    let datePosted: String
+    var datePosted: String
     let objectID: String
     let commentText: String?
     

@@ -21,29 +21,27 @@ class LNButton: UIButton {
     convenience init(title: String) {
         self.init(frame: .zero)
         set(title: title)
+        
+        
     }
     
     func configure() {
         
-        configuration = .tinted()
+        configuration = .plain()
         translatesAutoresizingMaskIntoConstraints = false
     }
     
     func set(title: String) {
-        var configButton = UIButton.Configuration.plain()
         
+        var config = UIButton.Configuration.plain()
         var attr = AttributeContainer()
-        attr.font = .systemFont(ofSize: 10, weight: .semibold)
-        attr.foregroundColor = .systemBlue
-        
-    
-    
-        configButton.attributedTitle = AttributedString(title, attributes: attr)
-        configButton.contentInsets = .init(top: 10, leading: 0, bottom: 10, trailing: 0)
-        configButton.titleAlignment = .leading
-        self.configuration = configButton
-        
-        
+        attr.font = .systemFont(ofSize: 14, weight: .semibold)
+        attr.foregroundColor = .systemGreen
+
+        config.attributedTitle = AttributedString(title, attributes: attr)
+        config.contentInsets = .init(top: 5, leading: 0, bottom: 5, trailing: 0)
+        config.titleAlignment = .leading
+        config.buttonSize = .large
+        self.configuration = config
     }
-    
 }

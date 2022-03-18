@@ -21,13 +21,15 @@ class LNHomeViewController: UIViewController {
         getNews()
     }
     
+    
     func getNews() {
         NetworkManager.shared.news {  [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let response):
                 DispatchQueue.main.async {
-                    let filterMostRecent = response.hits.sorted(by: {$0.datePosted > $1.datePosted})
+                    
+                    let filterMostRecent = response.hits.sorted(by: {$0.datePosted > $1.datePosted })
                     self.news = filterMostRecent
                     self.tableView.reloadData()
                 }
@@ -45,6 +47,7 @@ class LNHomeViewController: UIViewController {
     private func configureTableView() {
         tableView = UITableView(frame: view.bounds)
         view.addSubview(tableView)
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(LNStoryCell.self, forCellReuseIdentifier: LNStoryCell.reuseIdentifier)
@@ -58,18 +61,31 @@ extension LNHomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: LNStoryCell.reuseIdentifier, for: indexPath) as? LNStoryCell else { return UITableViewCell() }
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: LNStoryCell.reuseIdentifier) as! LNStoryCell
         let news = news[indexPath.row]
         cell.set(news: news)
+        cell.delegate = self
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        tableView.deselectRow(at: indexPath, animated: true)
         
         let newsComment = news[indexPath.row]
         let detailVC = LNDetailsViewController()
         detailVC.news = newsComment
         
         navigationController?.pushViewController(detailVC, animated: true)
+    }
+}
+
+extension LNHomeViewController: linkTappedDelegate {
+    func linkWasTapped(for linkNews: NewsStories) {
+        guard let url = URL(string: linkNews.url ?? "https://www.google.com") else { return }
+        presentSafariVC(with: url)
+        
     }
 }

@@ -12,15 +12,14 @@ class LNDetailsViewController: UIViewController {
     let tableView = UITableView()
     
     var news: NewsStories!
-    var newsID: String!
+    
     var newsComments: [NewsStories] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configure()
+        configureViewController()
         configureTableView()
         getComments()
-        
         
     }
     
@@ -28,11 +27,14 @@ class LNDetailsViewController: UIViewController {
         super.viewDidLayoutSubviews()
         
         guard let headerView = tableView.tableHeaderView else { return }
+        
         let size = headerView.systemLayoutSizeFitting(CGSize(width: tableView.bounds.height, height: 0))
         
         if headerView.frame.size.height != size.height {
             headerView.frame.size.height = size.height
+
             tableView.tableHeaderView = headerView
+            
             tableView.layoutIfNeeded()
         }
     }
@@ -41,6 +43,8 @@ class LNDetailsViewController: UIViewController {
         NetworkManager.shared.fetchComments(ids: news.objectID) { result in
             switch result {
             case .success(let ids):
+                
+                
                 DispatchQueue.main.async {
                     self.newsComments = ids.hits
                     
@@ -58,9 +62,13 @@ class LNDetailsViewController: UIViewController {
             }
         }
     }
-    func configure() {
+    func configureViewController() {
         navigationItem.largeTitleDisplayMode = .never
         navigationItem.title = "\(String(describing: news.numberOfComments ?? 0) ) Comments"
+        
+        //saveToFavoritesButton
+        let saveButton  = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveButtonTapped))
+        navigationItem.rightBarButtonItem = saveButton
     }
     
     func configureTableView() {
@@ -76,6 +84,29 @@ class LNDetailsViewController: UIViewController {
         
         tableView.register(LNCommentsTableViewCell.self, forCellReuseIdentifier: LNCommentsTableViewCell.reuseIdentifier)
     }
+    
+    @objc func saveButtonTapped() {
+        // When I tapp the save button, I want to fet the information from that news. So I pass in the news. and then the news gets fetch with an ID.  Which is the end point.
+        NetworkManager.shared.getNewsInfo(for: news) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+                
+            case .success(_):
+                
+                let favorite = NewsStory(title: self.news.title)
+                PersistanceManager.updateWith(news: favorite , actionType: .add) { error in
+                    guard let  error = error else {
+                        print("sucess")
+                        return
+                    }
+                    print(error.rawValue)
+                }
+                
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
 }
 
 extension LNDetailsViewController: UITableViewDelegate, UITableViewDataSource {
@@ -87,8 +118,10 @@ extension LNDetailsViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: LNCommentsTableViewCell.reuseIdentifier, for: indexPath) as? LNCommentsTableViewCell else { return UITableViewCell() }
         let comments = newsComments[indexPath.row]
         cell.set(comment: comments)
-        
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }

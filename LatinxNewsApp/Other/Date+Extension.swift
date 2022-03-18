@@ -8,6 +8,12 @@
 import Foundation
 
 extension Date {
+    func convertToMonthYearFormat() -> String {
+        return formatted(.dateTime.month(.abbreviated).day().year().hour().minute())
+    }
+}
+
+extension Date {
     func timeSinceDateString() -> String {
         
         let fromDate = self
@@ -48,3 +54,5 @@ extension String {
         return date
     }
 }
+
+

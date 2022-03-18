@@ -14,7 +14,7 @@ class LNTableHeader: UIView {
     // Stack for title and link
     let vStack = UIStackView()
     let titleLabel = LNTitleLabel(textAlignment: .left, fontSize: 16)
-    let linkButton = LNButton()
+    let datePosted = LNBodyLabel(textAlignment: .left, fontSize: 12)
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -31,7 +31,7 @@ class LNTableHeader: UIView {
         self.init(frame: .zero)
         
         titleLabel.text = news.title
-        linkButton.set(title: news.url ?? "www.google.com")
+        datePosted.text = "Posted on, \(news.datePosted.convertToDisplayFormat())"
     }
     
     private func configure() {
@@ -41,12 +41,12 @@ class LNTableHeader: UIView {
     private func configureVStack() {
         vStack.axis = .vertical
         vStack.alignment = .leading
-        vStack.spacing = 10
+        vStack.distribution = .fillProportionally
         
         vStack.addArrangedSubview(titleLabel)
-        vStack.addArrangedSubview(linkButton)
+        vStack.addArrangedSubview(datePosted)
     }
-    
+
     private func configureUI() {
         
         vStack.translatesAutoresizingMaskIntoConstraints = false
@@ -55,11 +55,10 @@ class LNTableHeader: UIView {
         
         NSLayoutConstraint.activate([
             vStack.topAnchor.constraint(equalTo: self.topAnchor, constant: padding),
-            vStack.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding),
-            vStack.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding),
+            vStack.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15),
+            vStack.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -15),
             vStack.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -padding),
+            vStack.heightAnchor.constraint(equalToConstant: 100)
         ])
-        
     }
-
 }

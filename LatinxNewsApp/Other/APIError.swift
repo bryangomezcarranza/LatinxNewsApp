@@ -7,7 +7,9 @@
 
 import Foundation
 
-enum APIError: Error {
-    case noDataReturned
-    case invalidURL
+enum APIError: String, Error {
+    case noDataReturned = "Unable to access data from Server"
+    case invalidURL = "Invalid URL from the server. Please check URL"
+    case unableToSave = "There was an error saving this user. Please try again"
+    case alreadySaved = "This has been saved already! You can only save ones"
 }

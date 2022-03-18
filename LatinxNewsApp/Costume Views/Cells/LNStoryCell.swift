@@ -7,18 +7,28 @@
 
 import UIKit
 
+protocol linkTappedDelegate: AnyObject {
+    func linkWasTapped(for linkNews: NewsStories)
+}
+
 class LNStoryCell: UITableViewCell {
     
     static let reuseIdentifier = "LNStoryCell"
     
+    weak var delegate: linkTappedDelegate!
+    
     var news: NewsStories!
     
+    let linkButton = LNButton()
     let titleLabel = LNTitleLabel(textAlignment: .left, fontSize: 16)
     let authorLabel = LNBodyLabel(textAlignment: .left, fontSize: 12)
     let upVoteLabel = LNSymbolView(symbol: UIImage(systemName: "arrow.up")!)
     let commentLabel = LNSymbolView(symbol: UIImage(systemName: "text.bubble")!)
     let timeOfPost = LNSymbolView(symbol: UIImage(systemName: "clock")!)
+    
+    
     let footerStackView = UIStackView()
+    let headerStackView = UIStackView()
     
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -26,6 +36,8 @@ class LNStoryCell: UITableViewCell {
         
         configure()
         configureFooterStackView()
+        configureHeaderStackView()
+        configureLinkButton()
     }
     
     required init?(coder: NSCoder) {
@@ -35,24 +47,40 @@ class LNStoryCell: UITableViewCell {
     func set(news: NewsStories) {
         self.news = news
         
+        linkButton.set(title: "Link")
         titleLabel.text = news.title
-        authorLabel.text = "By: \(news.author)"
+        authorLabel.text = "By: \(String(describing: news.author!))"
         upVoteLabel.set(text: String(news.points!))
         commentLabel.set(text: String(news.numberOfComments!))
         timeOfPost.set(text: Date.timeSinceDateString(news.datePosted.toDate(withFormat: news.datePosted))())
     }
     
+    private func configureLinkButton() {
+        linkButton.addTarget(self, action: #selector(linkButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc func linkButtonTapped() {
+        delegate.linkWasTapped(for: news)
+    }
+    
     private func configure() {
+        contentView.addSubview(headerStackView)
         contentView.addSubview(titleLabel)
         contentView.addSubview(authorLabel)
         contentView.addSubview(footerStackView)
         
         footerStackView.translatesAutoresizingMaskIntoConstraints = false
+        headerStackView.translatesAutoresizingMaskIntoConstraints = false
         
         let padding: CGFloat = 20
         
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: padding),
+            
+            headerStackView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            headerStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
+            
+            
+            titleLabel.topAnchor.constraint(equalTo: headerStackView.bottomAnchor),
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
             titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
             
@@ -64,6 +92,14 @@ class LNStoryCell: UITableViewCell {
             footerStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -14)
             
         ])
+    }
+    
+    private func configureHeaderStackView() {
+        headerStackView.axis = .horizontal
+        headerStackView.spacing = 5
+        
+        
+        headerStackView.addArrangedSubview(linkButton)
     }
     
     private func configureFooterStackView() {

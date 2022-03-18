@@ -12,7 +12,7 @@ class LNTabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        UITabBar.appearance().tintColor = .systemRed
+        UITabBar.appearance().tintColor = .systemGreen
         UITabBar.appearance().backgroundColor = .systemBackground
         
         viewControllers = [createHomeVC(), createFavoritesVC()]

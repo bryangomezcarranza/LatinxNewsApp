@@ -27,6 +27,12 @@ class NetworkManager {
         request(url: URL(string: endPoint), expecting: News.self, completion: completion)
     }
     
+    func getNewsInfo(for news: NewsStories, completion: @escaping (Result<News, Error>) -> Void) {
+        let endpoint = baseUrl + "search?tags=story_\(news.objectID)"
+        print(endpoint)
+        request(url: URL(string: endpoint), expecting: News.self, completion: completion)
+    }
+    
     
     //MARK: - Private
     
@@ -67,6 +73,7 @@ class NetworkManager {
                     completion(.failure(error))
                 } else {
                     completion(.failure(APIError.noDataReturned))
+                    
                 }
                 return
             }
