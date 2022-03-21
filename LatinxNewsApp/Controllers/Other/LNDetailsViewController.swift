@@ -75,7 +75,11 @@ class LNDetailsViewController: UIViewController {
         view.addSubview(tableView)
         
         tableView.frame = view.bounds
-        tableView.rowHeight = 80
+        
+        tableView.separatorStyle = .none
+
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = UITableView.automaticDimension
         
         tableView.delegate = self
         tableView.dataSource = self
