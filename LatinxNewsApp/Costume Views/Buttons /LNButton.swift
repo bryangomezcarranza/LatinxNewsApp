@@ -22,7 +22,6 @@ class LNButton: UIButton {
         self.init(frame: .zero)
         set(title: title)
         
-        
     }
     
     func configure() {
@@ -35,7 +34,7 @@ class LNButton: UIButton {
         
         var config = UIButton.Configuration.plain()
         var attr = AttributeContainer()
-        attr.font = .systemFont(ofSize: 14, weight: .semibold)
+        attr.font = .systemFont(ofSize: 12, weight: .semibold)
         attr.foregroundColor = .systemGreen
 
         config.attributedTitle = AttributedString(title, attributes: attr)

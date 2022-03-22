@@ -9,4 +9,5 @@ import Foundation
 
 struct NewsStory: Codable, Hashable {
     var title: String?
+    var url: String? 
 }

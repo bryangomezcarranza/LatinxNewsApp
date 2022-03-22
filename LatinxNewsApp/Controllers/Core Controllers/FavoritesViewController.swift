@@ -8,9 +8,10 @@
 import UIKit
 
 class FavoritesViewController: UIViewController {
+
+    
     
     var tableView = UITableView()
-    var newsItem: NewsStory!
     var news: [NewsStory] = []
     
     override func viewDidLoad() {
@@ -77,6 +78,7 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: SaveNewsCell.reuseIdentifier, for: indexPath) as! SaveNewsCell
         let news = news[indexPath.row]
         cell.set(news: news)
+        cell.delegate = self
         return cell
     }
 
@@ -99,5 +101,11 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
             print(error.localizedDescription)
         }
     }
-    
+}
+
+extension FavoritesViewController: linkArrowTappedDelegate {
+    func arrowWasTapped(for link: NewsStory) {
+        guard let url = URL(string: link.url ?? "https://www.google.com") else { return }
+        presentSafariVC(with: url)
+    }
 }

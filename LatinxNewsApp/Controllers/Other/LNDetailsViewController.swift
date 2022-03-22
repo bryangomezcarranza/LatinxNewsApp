@@ -97,7 +97,7 @@ class LNDetailsViewController: UIViewController {
                 
             case .success(_):
                 
-                let favorite = NewsStory(title: self.news.title)
+                let favorite = NewsStory(title: self.news.title, url: self.news.url)
                 PersistanceManager.updateWith(news: favorite , actionType: .add) { error in
                     guard let  error = error else {
                         print("sucess")
