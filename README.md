@@ -16,7 +16,7 @@ LatinxNewsApp is a design taken from a bigger idea. It is a news app that fetche
 ## Description
 
 This is a simple News App done with UIKit. UI is done programmatically, no storyboards. 
-App works with - Costum Userdefaults for Persistance, Codable for Network request. 
+App works with - Costum UserDefaults for Persistance and Codable for Network requests. 
 
 ### Motivation 
 
