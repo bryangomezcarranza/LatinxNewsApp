@@ -3,7 +3,7 @@ News App for Latinx News built in UIKit programmatically
 
 ## Overview
 
-LatinxNewsApp is a design taken from a bigger idea. It is a news app that fetchs tech news related to Latinos or Latinas in the USA from the Algolia API. This is a simple app that allows you to explore and save news articles. 
+LatinxNewsApp is a design taken from a bigger idea. It is a news app that fetches tech related news of Latinos or Latinas in the USA from the Algolia API. This is a simple app that allows you to explore and save news articles. 
 
 <p align="middle">
   <img src="/../main/Images/home.png" width="30.33%" />
