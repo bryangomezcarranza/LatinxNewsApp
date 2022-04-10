@@ -37,7 +37,8 @@ class SaveNewsCell: UITableViewCell {
         
         titleLabel.text = news.title
         linkToStory.set(title: "→")
-        linkToStory.titleLabel?.font = .systemFont(ofSize: 20, weight: .light)
+
+        
         
         titleLabel.numberOfLines = 2
         titleLabel.lineBreakMode = .byTruncatingHead
